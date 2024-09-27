@@ -15,8 +15,6 @@ export const loader = async ({params}: LoaderFunctionArgs) => {
 }
 export default function Index() {
     const post = useLoaderData()
-    console.log(post)
-    
   return (
     <div className="flex h-screen items-center justify-center">
       <h2>{post.title}</h2>
