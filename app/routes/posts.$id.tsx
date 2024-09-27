@@ -21,7 +21,7 @@ export default function Index() {
       <h2>blog detail
         
       </h2>
-      <h3>{post.slug}</h3>
+      <h3>{post.content}</h3>
     </div>
   );
 }

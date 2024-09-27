@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link, useLoaderData } from '@remix-run/react'
+import { json, Link, useLoaderData } from '@remix-run/react'
+import { getPosts } from '~/services/post.server'
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,27 +8,29 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "post starter" },
   ];
 };
-const posts = [
-    { title: 'first blog', slug: 'first'},
-    { title: 'second blog', slug: 'second'}
-]
 
-export const loader = ()=> {
-    return posts;
+
+export async function loader() {
+  const posts = await getPosts()
+  console.log(json(posts))
+ 
+  return json(posts)
 }
 
-export default function Index() {
+export default async function Index() {
+  const posts = await useLoaderData<typeof loader>()
+  console.log(posts)
   return (
     <div className="flex h-screen items-center justify-center">
       <h2>blog index</h2>
       <div>
-        <ul>
+        {/* <ul>
             {posts.map( post=> (
-                <li key={post.slug}>
-                    <Link to={post.slug}>{post.title}</Link>
+                <li key={post.__id}>
+                    <Link to={post.__id}>{post.title}</Link>
                 </li>
             ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
