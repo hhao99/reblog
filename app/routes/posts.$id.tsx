@@ -9,7 +9,8 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async ({params}: LoaderFunctionArgs) => {
-    const post = { title: 'fake', slug: params.slug}
+    const { id } = params;
+    const post = { title: 'fake', id }
     return post
 }
 export default function Index() {
@@ -18,10 +19,8 @@ export default function Index() {
     
   return (
     <div className="flex h-screen items-center justify-center">
-      <h2>blog detail
-        
-      </h2>
-      <h3>{post.slug}</h3>
+      <h2>{post.title}</h2>
+      <h3>{post.id}</h3>
     </div>
   );
 }
