@@ -16,9 +16,9 @@ export const loader = async ()=> {
 
 export default function Index() {
   const posts = useLoaderData<typeof loader>()
-  console.log(posts)
+  // console.log(posts)
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex flex-row h-screen items-center justify-center">
       <h2>blog index</h2>
       <div>
         <ul>
