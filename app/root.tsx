@@ -50,7 +50,8 @@ export function ErrorBoundary() {
 
   console.log(error)
 
-  return (      <Layout>
+  return (      
+    <Layout>
         <div>
           <h1>Error Page</h1>
           <h3>{error.data}</h3>
